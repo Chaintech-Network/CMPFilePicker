@@ -1,7 +1,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/network.chaintech/cmpfilepicker.svg)](https://central.sonatype.com/artifact/network.chaintech/cmpfilepicker)
 [![Kotlin](https://img.shields.io/badge/kotlin-v2.2.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.8.2-blue)](https://github.com/JetBrains/compose-multiplatform)
-[![License](https://img.shields.io/github/license/Chaintech-Network/CMPFilePicker-org)](http://www.apache.org/licenses/LICENSE-2.0)
+[![License](https://img.shields.io/github/license/Chaintech-Network/CMPFilePicker)](http://www.apache.org/licenses/LICENSE-2.0)
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
@@ -147,12 +147,15 @@ Desktop and web support are planned for future releases.
 
 ## 📖 Detailed Explanation
 
+For an in-depth guide and detailed explanation, check out our comprehensive Medium Blog Post.
+
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@hanif.s/cmpfilepicker-media-document-picker-for-compose-multiplatform-b7aa2694cd28)
 
 Stay connected and keep up with our latest innovations! 💼 Let's innovate together!
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/showcase/mobile-innovation-network)
 
----
+<br>
 
 ## 📄 License
 
