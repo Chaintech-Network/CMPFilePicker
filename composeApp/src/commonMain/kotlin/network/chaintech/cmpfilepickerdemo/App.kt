@@ -87,6 +87,8 @@ data class SelectedMedia(
     val document: SharedDocument? = null
 )
 
+const val maxSelectionCount = 3
+
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun App() {
@@ -303,11 +305,11 @@ private fun DialogManager(
                 onDialogStateChange(dialogState.copy(showImageSelection = false))
             },
             onGallerySingleClick = {
-                pickerState.pickImage(isSingle = true)
+                pickerState.pickImage()
                 onDialogStateChange(dialogState.copy(showImageSelection = false))
             },
             onGalleryMultipleClick = {
-                pickerState.pickImage()
+                pickerState.pickImage(maxCount = maxSelectionCount)
                 onDialogStateChange(dialogState.copy(showImageSelection = false))
             }
         )
@@ -319,11 +321,11 @@ private fun DialogManager(
                 onDialogStateChange(dialogState.copy(showVideoSelection = false))
             },
             onGallerySingleVideoClick = {
-                pickerState.pickVideo(isSingle = true)
+                pickerState.pickVideo()
                 onDialogStateChange(dialogState.copy(showVideoSelection = false))
             },
             onGalleryMultipleVideoClick = {
-                pickerState.pickVideo()
+                pickerState.pickVideo(maxCount = maxSelectionCount)
                 onDialogStateChange(dialogState.copy(showVideoSelection = false))
             }
         )

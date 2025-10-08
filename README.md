@@ -32,7 +32,7 @@ Add CMPFilePicker to your Compose Multiplatform project:
 
 ```kotlin
 commonMain.dependencies {
-    implementation("network.chaintech:cmpfilepicker:1.0.0")
+  implementation("network.chaintech:cmpfilepicker:1.0.0")
 }
 ```
 
@@ -50,26 +50,41 @@ val pickerState = rememberMediaPickerState()
 
 ```kotlin
 MediaPicker(
-    state = pickerState,
-    onResult = { result ->
-        when (result) {
-            is MediaResult.Image -> { /* Handle image */ }
-            is MediaResult.Video -> { /* Handle video */ }
-            is MediaResult.Document -> { /* Handle document */ }
-        }
-    },
-    onPermissionDenied = { deniedPermission ->
-        // Show a permission denied dialog
+  state = pickerState,
+  onResult = { result ->
+    when (result) {
+      is MediaResult.Image -> { /* Handle image */ }
+      is MediaResult.Video -> { /* Handle video */ }
+      is MediaResult.Document -> { /* Handle document */ }
     }
+  },
+  onPermissionDenied = { deniedPermission ->
+    // Show a permission denied dialog
+  }
 )
 ```
 
 ### 3️⃣ Trigger Picker Actions
-
+For the 'maxCount' parameter you can set:
+- **1** - Single selection (picks only one item)
+- **0** - Unlimited selection (picks any number of items)
+- **Any positive number (e.g., 3, 5, 10)** - Limited selection (picks up to that specific number of items)
 ```kotlin
-picker.pickImage(isSingle = true) // Pick a single image
-picker.pickVideo(isSingle = false) // Pick multiple videos
-picker.pickMixed(isSingle = false) // Pick images and videos
+// Pick images
+picker.pickImage(maxCount = 1) // Pick a single image
+picker.pickImage(maxCount = 3) // Pick up to 3 images
+picker.pickImage(maxCount = 0) // Pick unlimited images
+
+// Pick videos
+picker.pickVideo(maxCount = 1) // Pick a single video
+picker.pickVideo(maxCount = 5) // Pick up to 5 videos
+picker.pickVideo(maxCount = 0) // Pick unlimited videos
+
+// Pick mixed (images and videos)
+picker.pickMixed(maxCount = 1) // Pick a single media item
+picker.pickMixed(maxCount = 10) // Pick up to 10 media items
+picker.pickMixed(maxCount = 0) // Pick unlimited media items
+
 picker.pickDocument(mimeTypes = listOf("application/pdf"), isSingle = true) // Pick a PDF
 picker.pickCamera() // Capture an image from the camera (always single)
 ```
@@ -77,7 +92,7 @@ picker.pickCamera() // Capture an image from the camera (always single)
 #### Example: Pick an Image and Handle Result
 
 ```kotlin
-picker.pickImage(isSingle = true)
+picker.pickImage()
 // The onResult callback will deliver a MediaResult.Image
 ```
 
@@ -85,9 +100,9 @@ picker.pickImage(isSingle = true)
 
 ```kotlin
 val permissionsManager = createPermissionsManager(object : PermissionCallback {
-    override fun onPermissionStatus(permissionType: PermissionType, status: PermissionStatus) {
-        // Handle permission status if needed
-    }
+  override fun onPermissionStatus(permissionType: PermissionType, status: PermissionStatus) {
+    // Handle permission status if needed
+  }
 })
 ```
 
