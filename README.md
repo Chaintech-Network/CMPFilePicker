@@ -5,6 +5,7 @@
 
 ![badge-android](http://img.shields.io/badge/platform-android-3DDC84.svg?style=flat)
 ![badge-ios](http://img.shields.io/badge/platform-ios-FF375F.svg?style=flat)
+![badge-desktop](http://img.shields.io/badge/platform-desktop-4CAF50.svg?style=flat)
 
 # CMPFilePicker - Media & Document Picker for Compose Multiplatform
 
@@ -32,7 +33,7 @@ Add CMPFilePicker to your Compose Multiplatform project:
 
 ```kotlin
 commonMain.dependencies {
-  implementation("network.chaintech:cmpfilepicker:1.0.1")
+  implementation("network.chaintech:cmpfilepicker:1.1.0")
 }
 ```
 
@@ -153,10 +154,10 @@ See CMPFilePicker in action:
 
 CMPFilePicker currently supports:
 
-- **Android** 🤖
-- **iOS** 🍎
 
-Desktop and web support are planned for future releases.
+| Android 🤖 | iOS 🍎 | Desktop 💻 | Web 🌐 |
+|------------|--------|------------|---------------------------|
+| ✅          | ✅      | ✅          | ⏳ (Work in Progress)         |
 
 ---
 
