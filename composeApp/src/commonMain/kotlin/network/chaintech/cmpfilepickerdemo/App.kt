@@ -35,6 +35,7 @@ import multiplatform.network.cmpfilepicker.permission.PermissionType
 import multiplatform.network.cmpfilepicker.permission.createPermissionsManager
 import multiplatform.network.cmpfilepicker.rememberMediaPickerState
 import multiplatform.network.cmpfilepicker.utils.MediaResult
+import multiplatform.network.cmpfilepicker.utils.MimeTypes
 import network.chaintech.cmpfilepickerdemo.ui.AlertMessageDialog
 import network.chaintech.cmpfilepickerdemo.ui.DocumentScreen
 import network.chaintech.cmpfilepickerdemo.ui.EnhancedMediaDisplayScreen1
@@ -305,7 +306,7 @@ private fun DialogManager(
                 onDialogStateChange(dialogState.copy(showImageSelection = false))
             },
             onGallerySingleClick = {
-                pickerState.pickImage()
+                pickerState.pickImage(mimeTypes = listOf(MimeTypes.IMAGE_PNG))
                 onDialogStateChange(dialogState.copy(showImageSelection = false))
             },
             onGalleryMultipleClick = {

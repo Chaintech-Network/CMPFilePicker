@@ -33,7 +33,7 @@ Add CMPFilePicker to your Compose Multiplatform project:
 
 ```kotlin
 commonMain.dependencies {
-  implementation("network.chaintech:cmpfilepicker:1.1.0")
+  implementation("network.chaintech:cmpfilepicker:1.1.1")
 }
 ```
 
