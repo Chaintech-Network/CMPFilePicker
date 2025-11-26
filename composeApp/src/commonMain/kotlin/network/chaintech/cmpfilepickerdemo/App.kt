@@ -29,23 +29,11 @@ import multiplatform.network.cmpfilepicker.externalviewer.openDocumentInExternal
 import multiplatform.network.cmpfilepicker.externalviewer.openVideoInExternalPlayer
 import multiplatform.network.cmpfilepicker.models.SharedDocument
 import multiplatform.network.cmpfilepicker.models.SharedVideo
-import multiplatform.network.cmpfilepicker.permission.PermissionCallback
-import multiplatform.network.cmpfilepicker.permission.PermissionStatus
-import multiplatform.network.cmpfilepicker.permission.PermissionType
-import multiplatform.network.cmpfilepicker.permission.createPermissionsManager
+import multiplatform.network.cmpfilepicker.permission.*
 import multiplatform.network.cmpfilepicker.rememberMediaPickerState
 import multiplatform.network.cmpfilepicker.utils.MediaResult
-import multiplatform.network.cmpfilepicker.utils.MimeTypes
-import network.chaintech.cmpfilepickerdemo.ui.AlertMessageDialog
-import network.chaintech.cmpfilepickerdemo.ui.DocumentScreen
-import network.chaintech.cmpfilepickerdemo.ui.EnhancedMediaDisplayScreen1
-import network.chaintech.cmpfilepickerdemo.ui.HomeScreen
-import network.chaintech.cmpfilepickerdemo.ui.SimpleImageViewer
-import network.chaintech.cmpfilepickerdemo.ui.VideoPlayer
-import network.chaintech.cmpfilepickerdemo.ui.bottomsheet.OpenWithBottomSheetFactory
-import network.chaintech.cmpfilepickerdemo.ui.bottomsheet.SelectDocumentBottomSheet
-import network.chaintech.cmpfilepickerdemo.ui.bottomsheet.SelectImageBottomSheet
-import network.chaintech.cmpfilepickerdemo.ui.bottomsheet.SelectVideoBottomSheet
+import network.chaintech.cmpfilepickerdemo.ui.*
+import network.chaintech.cmpfilepickerdemo.ui.bottomsheet.*
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 // Enum to manage different screen states
@@ -122,21 +110,21 @@ fun App() {
                     when (result) {
                         is MediaResult.Image -> {
                             mediaData = mediaData.copy(
-                                images = mediaData.images + result.bitmap
+                                images =  result.bitmap
                             )
                             currentScreen = AppScreen.MEDIA_DISPLAY
                         }
 
                         is MediaResult.Video -> {
                             mediaData = mediaData.copy(
-                                videos = mediaData.videos + result.video
+                                videos = result.video
                             )
                             currentScreen = AppScreen.MEDIA_DISPLAY
                         }
 
                         is MediaResult.Document -> {
                             mediaData = mediaData.copy(
-                                documents = mediaData.documents + result.document
+                                documents = result.document
                             )
                             currentScreen = AppScreen.MEDIA_DISPLAY
                         }
@@ -157,7 +145,6 @@ fun App() {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    //.padding(paddingValues)
                     .background(Color.DarkGray),
                 contentAlignment = Alignment.Center
             ) {
@@ -201,7 +188,7 @@ fun App() {
                                     pickerState.pickCamera()
                                 },
                                 onAnyTypeClick = {
-                                    pickerState.pickMixed()
+                                    pickerState.pickMixed(maxCount = maxSelectionCount)
                                 }
                             )
                         }
@@ -306,7 +293,7 @@ private fun DialogManager(
                 onDialogStateChange(dialogState.copy(showImageSelection = false))
             },
             onGallerySingleClick = {
-                pickerState.pickImage(mimeTypes = listOf(MimeTypes.IMAGE_PNG))
+                pickerState.pickImage()
                 onDialogStateChange(dialogState.copy(showImageSelection = false))
             },
             onGalleryMultipleClick = {
@@ -345,25 +332,6 @@ private fun DialogManager(
                 pickerState.pickDocument()
                 onDialogStateChange(dialogState.copy(showDocumentSelection = false))
             }
-        )
-    }
-
-    // Viewer Bottom Sheets
-    if (dialogState.showPhotoViewer) {
-        OpenWithBottomSheetFactory.ForPhoto(
-            onDismiss = {
-                onDialogStateChange(dialogState.copy(showPhotoViewer = false))
-            },
-            onPhotoViewerClick = {
-                onDialogStateChange(dialogState.copy(showPhotoViewer = false))
-                // Handle internal photo viewing
-            },
-            onMoreAppsClick = {
-                onDialogStateChange(dialogState.copy(showPhotoViewer = false))
-                // Handle external photo viewing
-            },
-            photoViewerIcon = Res.drawable.ic_image_dailog,
-            moreAppsIcon = Res.drawable.ic_more_apps
         )
     }
 

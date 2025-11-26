@@ -13,6 +13,12 @@
 
 <img width="960" alt="Hero-image - CMPFilePicker" src="/assets/banner.jpg"><br><br>
 
+
+## 🎉 What's New in Version 1.1.3
+- ️**Media Picker State Permission Issue Fix:** Fixed first time permission issue with media picker state & auto open picker/camera once permission granted.
+- ️**IOS Side Non Skia Image Decoding:** Added support for IOS side non skia decoding for camera and picked images.
+
+  
 ## ✨ Features
 
 - **Photo Picker:** Select images from the camera or gallery.
@@ -33,7 +39,7 @@ Add CMPFilePicker to your Compose Multiplatform project:
 
 ```kotlin
 commonMain.dependencies {
-  implementation("network.chaintech:cmpfilepicker:1.1.1")
+  implementation("network.chaintech:cmpfilepicker:1.1.2")
 }
 ```
 
